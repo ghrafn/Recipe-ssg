@@ -1,3 +1,4 @@
+
 import os
 from datetime import datetime
 from jinja2 import Environment, PackageLoader
@@ -43,3 +44,4 @@ for post in POSTS:
     os.makedirs(os.path.dirname(post_file_path), exist_ok=True)
     with open(post_file_path, 'w') as file:
         file.write(post_html)
+
