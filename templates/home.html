@@ -1,58 +1,43 @@
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Recipes</title>
-</head>
-<body>
+{% extends "layout.html" %}
 
-    {% extends "layout.html" %}
-
-    {% block content %}
-    
+{% block content %}
+<header class="bgcolor3 marginheader">
     <h1>My Recipes</h1>
-    
-    <div class="flex three demo">
-    
-    {% for post in posts %}
-    
-        <div>
-    
-            <article class="card">
-                <header>
-                    <img src="{{ post.thumbnail }}">
-                </header>
-                <footer>
-                    <h2>{{ post.title }}</h2>
-                    <small>{{ post.date }}</small>
-                    <p>
-                        {{ post.summary}}
-                    </p>
-                    <a class="button" href="posts/{{ post.slug }}.html">Recipe</a>
-                    <br>
-                    {% set list_of_tags = post.tags.split(",") %}
-                    {% for tag in list_of_tags %}
-                        <button class="shyButton mybutton">{{ tag }}</button>
-                    {% endfor %}
-                </footer>
-                
-            </article>
-    
-        </div>
-    
-    <!-- 
-        <p>
-                <h2>{{loop.index}}: <a href="posts/{{ post.slug }}.html">{{post.title}}</a> <small>{{post.date}}</small></h2>
-                {{post.summary}}
-            </p> -->
-    
-    {% endfor %}
-    
+</header>
+
+<div class="flex three demo">
+
+{% for post in posts %}
+
+    <div>
+
+        <article class="card color">
+            <header class="margin">
+                <img src="{{ post.thumbnail }}">
+            </header>
+            <footer>
+                <h2>{{ post.title }}</h2>
+                <small>{{ post.date }}</small>
+                <p>
+                    {{ post.summary}}
+                </p>
+                <a class="button" href="posts/{{ post.slug }}.html">Recipe</a>
+                <br>
+                {% set list_of_tags = post.tags.split(",") %}
+                {% for tag in list_of_tags %}
+                    <button class="shyButton mybutton">{{ tag }}</button>
+                {% endfor %}
+            </footer>
+            
+        </article>
+
     </div>
-    
-    {% endblock %}
-</body>
-</html>
+
+{% endfor %}
+
+</div>
+<footer class="bgcolor3 marginfooter">
+
+</footer>
+{% endblock %}
